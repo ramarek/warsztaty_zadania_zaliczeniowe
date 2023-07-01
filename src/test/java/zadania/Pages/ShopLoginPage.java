@@ -18,8 +18,8 @@ public class ShopLoginPage {
     @FindBy(id = PasswordFiledId)
     private WebElement passwordField;
 
-    private static final String loginButtonId = "submit-login";
-    @FindBy(id = loginButtonId)
+    private static final String LoginButtonId = "submit-login";
+    @FindBy(id =LoginButtonId)
     private WebElement loginButton;
 
     public ShopLoginPage OpenPage() {
@@ -35,7 +35,7 @@ public class ShopLoginPage {
         webDriverWrapper.enterText(passwordField,password);
         webDriverWrapper.clickOnElement(loginButton);
 
-        return new ShopMainPage();
+        return new ShopMainPage(webDriverWrapper);
     }
 }
 // email:dapik41292@extemer.com

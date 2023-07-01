@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.*;
@@ -71,6 +72,9 @@ public class WebDriverWrapper {
         webElement.sendKeys(text);
 
     }
-
-
+    public void setSelect(WebElement webElement, String value){
+        waitUntilElementIsVisible(webElement);
+        Select select = new Select(webElement);
+        select.selectByValue(value);
+    }
 }

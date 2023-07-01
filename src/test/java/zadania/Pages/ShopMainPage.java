@@ -12,7 +12,6 @@ public class ShopMainPage {
     private static final String AddFirstAddressCss = "a[data-link-action='add-address']";
     @FindBy(css = AddFirstAddressCss)
     private WebElement addFirstAddress;
-
     private static final String AliasFiledId = "field-alias";
     @FindBy(id = AliasFiledId)
     private WebElement aliasField;
@@ -35,6 +34,10 @@ public class ShopMainPage {
     private static final String SaveButtonClass = "form-control-submit";
     @FindBy(className = SaveButtonClass)
     private WebElement saveButton;
+
+    private static final String UserAddressClass = "address";
+    @FindBy(css = UserAddressClass)
+    private WebElement userAddress;
 
     public ShopMainPage(WebDriverWrapper webDriverWrapper){
         this.webDriverWrapper = webDriverWrapper;
@@ -59,6 +62,18 @@ public class ShopMainPage {
 
         webDriverWrapper.clickOnElement(saveButton);
         return this;
+    }
+    public ShopMainPage assertAddress(String alias, String address, String city, String postalCode, String country, String phone) {
+        String addressData = webDriverWrapper.getText(userAddress);
+        assert addressData.contains(alias);
+        assert addressData.contains(address);
+        assert addressData.contains(city);
+        assert addressData.contains(postalCode);
+        assert addressData.contains(country);
+        assert addressData.contains(phone);
+
+        return this;
+
     }
 
 }

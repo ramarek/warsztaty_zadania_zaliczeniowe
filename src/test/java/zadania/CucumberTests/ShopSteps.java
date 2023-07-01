@@ -4,6 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import zadania.Pages.ShopLoginPage;
 import zadania.Pages.ShopMainPage;
@@ -36,5 +37,10 @@ public class ShopSteps {
     @When("New Address is added {string} {string} {string} {string} {string} {string}")
     public void AddNewAddress(String alias, String address, String city, String postalCode, String country, String phone) {
         shopMainPage.setAddress(alias,address,city,postalCode,country,phone);
+    }
+
+    @Then("Check if address is correct {string} {string} {string} {string} {string} {string}")
+    public void CheckAddress(String alias, String address, String city, String postalCode, String country, String phone) {
+        shopMainPage.assertAddress(alias,address,city,postalCode,country,phone);
     }
 }

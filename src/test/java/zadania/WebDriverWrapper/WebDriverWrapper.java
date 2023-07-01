@@ -77,4 +77,10 @@ public class WebDriverWrapper {
         Select select = new Select(webElement);
         select.selectByValue(value);
     }
+
+    public String getText(WebElement webElement) {
+        waitUntilElementIsVisible(webElement);
+        return webElement.getText();
+    }
+
 }

@@ -6,6 +6,7 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import zadania.Pages.ProductPage;
 import zadania.Pages.ShopLoginPage;
 import zadania.Pages.ShopMainPage;
 import zadania.WebDriverWrapper.WebDriverWrapper;
@@ -14,6 +15,7 @@ public class ShopSteps {
 
     ShopLoginPage shopLoginPage;
     ShopMainPage shopMainPage;
+    ProductPage productPage;
     WebDriverWrapper webDriverWrapper;
     @Before
     public void beforeScenario(Scenario scenario){
@@ -42,5 +44,18 @@ public class ShopSteps {
     @Then("Check if address is correct {string} {string} {string} {string} {string} {string}")
     public void CheckAddress(String alias, String address, String city, String postalCode, String country, String phone) {
         shopMainPage.assertAddress(alias,address,city,postalCode,country,phone);
+    }
+
+    @When("User searches for product {string}")
+    public void searchForProduct(String productName) {
+        productPage = shopMainPage.searchForProduct(productName);
+    }
+    @Then("Product page is opened {string}")
+    public void productPageIsOpened(String productName) {
+        productPage.checkIsPageIsOpened(productName);
+    }
+    @When("User sets product size {string}")
+    public void setProductSize(String productSize) {
+        productPage.setProductSize(productSize);
     }
 }

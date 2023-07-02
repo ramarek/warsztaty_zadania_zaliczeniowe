@@ -1,9 +1,7 @@
-Feature: User Data
-  Scenario Outline: Change Address
+Feature: Shop
+  Scenario: Buy 5 products
     Given user is log in 'dapik41292@extemer.com' 'Test123!'
-    And Add new Address is clicked
-    When New Address is added '<alias>' '<address>' '<city>' '<postalCode>' '<country>' '<phone>'
-    Then Check if address is correct '<alias>' '<address>' '<city>' '<postalCode>' '<country>' '<phone>'
-    Examples:
-    | alias  | address  | city  | postalCode | country        | phone    |
-    | aliss1 | address1 | city1 | 44-222     | United Kingdom | 4444444  |
+    When User searches for product 'Hummingbird Printed Sweater'
+    Then Product page is opened 'Hummingbird Printed Sweater'
+    When User sets product size 'M'
+

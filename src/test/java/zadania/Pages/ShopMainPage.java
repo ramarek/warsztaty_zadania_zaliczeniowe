@@ -6,6 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import zadania.WebDriverWrapper.WebDriverWrapper;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 
 public class ShopMainPage {
     private final WebDriverWrapper webDriverWrapper;
@@ -30,14 +32,18 @@ public class ShopMainPage {
     private static final String PhoneFiledId = "field-phone";
     @FindBy(id = PhoneFiledId)
     private WebElement phoneField;
-
     private static final String SaveButtonClass = "form-control-submit";
     @FindBy(className = SaveButtonClass)
     private WebElement saveButton;
-
     private static final String UserAddressClass = "address";
     @FindBy(css = UserAddressClass)
     private WebElement userAddress;
+    private static final String searchClass = "ui-autocomplete-input";
+    @FindBy(className = searchClass)
+    private WebElement search;
+    private static final String productsTitlesClass = "product-title";
+    @FindBy(className = productsTitlesClass)
+    private List<WebElement> products;
 
     public ShopMainPage(WebDriverWrapper webDriverWrapper){
         this.webDriverWrapper = webDriverWrapper;
@@ -73,7 +79,22 @@ public class ShopMainPage {
         assert addressData.contains(phone);
 
         return this;
+    }
 
+    public ProductPage openProduct(String productName) {
+        for ( WebElement product : products)
+        {
+           if (Objects.equals(webDriverWrapper.getText(product), productName)) {
+               webDriverWrapper.clickOnElement(product);
+               return new ProductPage(webDriverWrapper);
+           }
+        }
+        return null;
+    }
+    public ProductPage searchForProduct(String productName){
+        webDriverWrapper.enterText(search,productName);
+        webDriverWrapper.pressEnter();
+        return openProduct(productName);
     }
 
 }

@@ -4,4 +4,6 @@ Feature: Shop
     When User searches for product 'Hummingbird Printed Sweater'
     Then Product page is opened 'Hummingbird Printed Sweater'
     When User sets product size 'M'
+    And User sets product quantity '5'
+    And User click add to cart
 

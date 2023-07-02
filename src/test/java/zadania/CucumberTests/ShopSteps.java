@@ -6,6 +6,7 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import zadania.Pages.CartPage;
 import zadania.Pages.ProductPage;
 import zadania.Pages.ShopLoginPage;
 import zadania.Pages.ShopMainPage;
@@ -16,6 +17,7 @@ public class ShopSteps {
     ShopLoginPage shopLoginPage;
     ShopMainPage shopMainPage;
     ProductPage productPage;
+    CartPage cartPage;
     WebDriverWrapper webDriverWrapper;
     @Before
     public void beforeScenario(Scenario scenario){
@@ -57,5 +59,13 @@ public class ShopSteps {
     @When("User sets product size {string}")
     public void setProductSize(String productSize) {
         productPage.setProductSize(productSize);
+    }
+    @When("User sets product quantity {string}")
+    public void setProductQuantity(String productQuantity) {
+        productPage.setProductQuantity(productQuantity);
+    }
+    @When("User click add to cart")
+    public void clickAddToCart() {
+        cartPage = productPage.clickAddToCart();
     }
 }

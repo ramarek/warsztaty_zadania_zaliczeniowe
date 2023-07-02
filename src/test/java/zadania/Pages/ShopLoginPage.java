@@ -9,19 +9,15 @@ import zadania.WebDriverWrapper.WebDriverWrapper;
 public class ShopLoginPage {
     private static String url = "https://mystore-testlab.coderslab.pl/index.php?controller=authentication&back=addresses";
     private final WebDriverWrapper webDriverWrapper;
-
     private static final String LoginFiledId = "field-email";
     @FindBy(id = LoginFiledId)
     private WebElement loginField;
-
     private static final String PasswordFiledId = "field-password";
     @FindBy(id = PasswordFiledId)
     private WebElement passwordField;
-
     private static final String LoginButtonId = "submit-login";
     @FindBy(id =LoginButtonId)
     private WebElement loginButton;
-
     public ShopLoginPage OpenPage() {
         webDriverWrapper.OpenPage(url);
         return this;

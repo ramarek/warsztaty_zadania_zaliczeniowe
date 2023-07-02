@@ -47,7 +47,6 @@ public class ShopSteps {
     public void CheckAddress(String alias, String address, String city, String postalCode, String country, String phone) {
         shopMainPage.assertAddress(alias,address,city,postalCode,country,phone);
     }
-
     @When("User searches for product {string}")
     public void searchForProduct(String productName) {
         productPage = shopMainPage.searchForProduct(productName);
@@ -64,8 +63,16 @@ public class ShopSteps {
     public void setProductQuantity(String productQuantity) {
         productPage.setProductQuantity(productQuantity);
     }
-    @When("User click add to cart")
+    @When("User clicks add to cart")
     public void clickAddToCart() {
         cartPage = productPage.clickAddToCart();
+    }
+    @When("User clicks Proceed to checkout")
+    public void clickProceedToCheckout() {
+        cartPage.clickProceedToCheckout();
+    }
+    @When("User clicks Confirm Address")
+    public void clickConfirmAddress() {
+        cartPage.clickConfirmAddress();
     }
 }

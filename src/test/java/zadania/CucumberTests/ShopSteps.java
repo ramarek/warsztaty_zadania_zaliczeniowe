@@ -21,7 +21,7 @@ public class ShopSteps {
     WebDriverWrapper webDriverWrapper;
     @Before
     public void beforeScenario(Scenario scenario){
-        webDriverWrapper = new WebDriverWrapper();
+        webDriverWrapper = WebDriverWrapper.getInstance();
         shopLoginPage = new ShopLoginPage(webDriverWrapper);
     }
 

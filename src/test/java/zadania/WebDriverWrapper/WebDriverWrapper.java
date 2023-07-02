@@ -16,7 +16,7 @@ import java.time.Duration;
 
 public class WebDriverWrapper {
 
-
+    private static WebDriverWrapper INSTANCE;
     private final WebDriver driver;
     private final Wait<WebDriver> wait;
     private final String ChromeDriverPath="C:\\Users\\rober\\warsztaty_zadania_zaliczeniowe\\src\\test\\resources\\chromeDriver\\chromedriver.exe";
@@ -27,6 +27,13 @@ public class WebDriverWrapper {
         this.wait = getFluentWait();
        }
 
+    public static WebDriverWrapper getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new WebDriverWrapper();
+        }
+
+        return INSTANCE;
+    }
 
     private Wait<WebDriver> getFluentWait(){
         return new FluentWait<WebDriver>(this.driver)

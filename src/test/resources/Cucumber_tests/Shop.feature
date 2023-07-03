@@ -8,3 +8,8 @@ Feature: Shop
     And User clicks add to cart
     And User clicks Proceed to checkout
     And User clicks Confirm Address
+    And User selects shipping method 'Pick up in-store'
+    And User selects payment method 'Pay by Check'
+    And User checks conditions to approve
+    And User clicks place order button
+    Then Take Screenshot "order_confirmation.png"

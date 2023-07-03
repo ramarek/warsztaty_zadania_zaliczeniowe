@@ -12,6 +12,8 @@ import zadania.Pages.ShopLoginPage;
 import zadania.Pages.ShopMainPage;
 import zadania.WebDriverWrapper.WebDriverWrapper;
 
+import java.io.IOException;
+
 public class ShopSteps {
 
     ShopLoginPage shopLoginPage;
@@ -75,4 +77,26 @@ public class ShopSteps {
     public void clickConfirmAddress() {
         cartPage.clickConfirmAddress();
     }
+    @When("User selects shipping method {string}")
+    public void selectShippingMethods(String shippingMethod) {
+        cartPage.selectShippingMethod(shippingMethod);
+    }
+    @When("User selects payment method {string}")
+    public void selectPaymentMethods(String paymentMethod) {
+        cartPage.selectPaymentMethod(paymentMethod);
+    }
+    @When("User checks conditions to approve")
+    public void checkConditionsToApproveCheckBox() {
+        cartPage.checkConditionsToApproveCheckBox();
+    }
+    @When("User clicks place order button")
+    public void clickPlaceOrderButton() {
+        cartPage.clickPlaceOrderButton();
+    }
+
+    @Then("Take Screenshot {string}")
+    public void takeScreenshot(String fileName) throws IOException {
+        webDriverWrapper.takeScreenshot(fileName);
+    }
+
 }

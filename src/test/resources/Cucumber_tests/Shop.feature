@@ -9,6 +9,7 @@ Feature: Shop
     And User clicks Proceed to checkout
     And User clicks Confirm Address
     And User selects shipping method 'Pick up in-store'
+    And User clicks continue
     And User selects payment method 'Pay by Check'
     And User checks conditions to approve
     And User clicks place order button

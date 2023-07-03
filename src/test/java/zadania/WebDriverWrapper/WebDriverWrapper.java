@@ -111,4 +111,9 @@ public class WebDriverWrapper {
         File DestFile = new File(fileName);
         FileUtils.copyFile(SrcFile, DestFile);
     }
+
+    public WebElement getParent(WebElement webElement) {
+        return   (WebElement)((JavascriptExecutor) driver).executeScript(
+                "return arguments[0].parentNode;", webElement);
+    }
 }

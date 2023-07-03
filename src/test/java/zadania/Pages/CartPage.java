@@ -1,5 +1,6 @@
 package zadania.Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -26,14 +27,17 @@ public class CartPage {
     private static final String PaymentOptionName = "payment-option";
     @FindBy(name = PaymentOptionName)
     private List<WebElement> paymentOptions;
-    private static final String ConditionsToApproveId = "conditions_to_approve[terms-and-conditions]";
-    @FindBy(name = ConditionsToApproveId)
+    private static final String ConditionsToApproveClass = "custom-checkbox";
+    @FindBy(className = ConditionsToApproveClass)
     private WebElement conditionsToApproveCheckBox;
     private static final String PlaceOrderBtnCss = "conditions_to_approve[terms-and-conditions]button";
     @FindBy(css = PlaceOrderBtnCss)
     private WebElement placeOrderBtn;
+    private static final String confirmDeliveryOptionName = "confirmDeliveryOption";
+    @FindBy(name = confirmDeliveryOptionName)
+    private WebElement confirmDeliveryOptionButton;
 
-    //btn-primary
+    //checkout
     public CartPage(WebDriverWrapper webDriverWrapper){
         this.webDriverWrapper = webDriverWrapper;
         PageFactory.initElements(this.webDriverWrapper.getDriver(), this);
@@ -55,16 +59,23 @@ public class CartPage {
         }
         return this;
     }
+    public CartPage clickConfirmDeliveryOptionButton() {
+        webDriverWrapper.clickOnElement(confirmDeliveryOptionButton);
+        return this;
+    }
     public CartPage selectPaymentMethod(String paymentMethod) {
         for ( WebElement paymentMethodElement : paymentOptions) {
-            if(Objects.equals(webDriverWrapper.getText(paymentMethodElement), paymentMethod)) {
-                webDriverWrapper.clickOnElement(paymentMethodElement);
+            WebElement paymentMethodElementParent = webDriverWrapper.getParent(paymentMethodElement);
+            WebElement paymentMethodElementGrantParent = webDriverWrapper.getParent(paymentMethodElementParent);
+            String paymentMethodElementText = webDriverWrapper.getText(paymentMethodElementGrantParent);
+            if(Objects.equals(paymentMethodElementText, paymentMethod)) {
+                webDriverWrapper.clickOnElement(paymentMethodElementParent);
             }
         }
         return this;
     }
     public CartPage checkConditionsToApproveCheckBox() {
-        webDriverWrapper.clickOnElement(conditionsToApproveCheckBox);
+        webDriverWrapper.clickOnElement(webDriverWrapper.getParent(conditionsToApproveCheckBox));
         return this;
     }
     public CartPage clickPlaceOrderButton() {

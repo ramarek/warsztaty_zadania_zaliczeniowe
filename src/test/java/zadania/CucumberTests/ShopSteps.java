@@ -81,6 +81,10 @@ public class ShopSteps {
     public void selectShippingMethods(String shippingMethod) {
         cartPage.selectShippingMethod(shippingMethod);
     }
+    @When("User clicks continue")
+    public void clickConfirmDeliveryOptionButton() {
+        cartPage.clickConfirmDeliveryOptionButton();
+    }
     @When("User selects payment method {string}")
     public void selectPaymentMethods(String paymentMethod) {
         cartPage.selectPaymentMethod(paymentMethod);

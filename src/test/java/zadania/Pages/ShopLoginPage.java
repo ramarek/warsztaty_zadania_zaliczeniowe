@@ -18,14 +18,16 @@ public class ShopLoginPage {
     private static final String LoginButtonId = "submit-login";
     @FindBy(id =LoginButtonId)
     private WebElement loginButton;
-    public ShopLoginPage OpenPage() {
-        webDriverWrapper.OpenPage(url);
-        return this;
-    }
+
     public ShopLoginPage(WebDriverWrapper webDriverWrapper){
         this.webDriverWrapper = webDriverWrapper;
         PageFactory.initElements(this.webDriverWrapper.getDriver(), this);
     }
+    public ShopLoginPage OpenPage() {
+        webDriverWrapper.OpenPage(url);
+        return this;
+    }
+
     public ShopMainPage LogIn(String login, String password){
         webDriverWrapper.enterText(loginField,login);
         webDriverWrapper.enterText(passwordField,password);

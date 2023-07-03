@@ -24,13 +24,12 @@ public class ProductPage {
     @FindBy(css = AddToCartButtonCss)
     private WebElement addToCartButton;
 
-    //add-to-cart
     public ProductPage(WebDriverWrapper webDriverWrapper){
         this.webDriverWrapper = webDriverWrapper;
         PageFactory.initElements(this.webDriverWrapper.getDriver(), this);
     }
 
-    public ProductPage checkIsPageIsOpened(String productName) {
+    public ProductPage checkIfPageIsOpened(String productName) {
         assert Objects.equals(webDriverWrapper.getText(productContainer), productName.toUpperCase());
         return this;
     }

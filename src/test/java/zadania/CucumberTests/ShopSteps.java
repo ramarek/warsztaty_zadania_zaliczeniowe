@@ -32,7 +32,7 @@ public class ShopSteps {
         webDriverWrapper.quitDriver();
     }
 
-    @Given("user is log in {string} {string}")
+    @Given("User is log in {string} {string}")
     public void LogIn(String login, String password) {
         shopMainPage = shopLoginPage.OpenPage().LogIn(login, password);
     }
@@ -55,7 +55,7 @@ public class ShopSteps {
     }
     @Then("Product page is opened {string}")
     public void productPageIsOpened(String productName) {
-        productPage.checkIsPageIsOpened(productName);
+        productPage.checkIfPageIsOpened(productName);
     }
     @When("User sets product size {string}")
     public void setProductSize(String productSize) {

@@ -18,7 +18,6 @@ import java.time.Duration;
 import org.apache.commons.io.FileUtils;
 
 public class WebDriverWrapper {
-
     private static WebDriverWrapper INSTANCE;
     private final WebDriver driver;
     private final Wait<WebDriver> wait;
@@ -36,7 +35,6 @@ public class WebDriverWrapper {
         }
         return INSTANCE;
     }
-
     private Wait<WebDriver> getFluentWait() {
         return new FluentWait<WebDriver>(this.driver)
                 .withTimeout(Duration.ofSeconds(10))

@@ -1,6 +1,5 @@
 package zadania.Pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -37,7 +36,7 @@ public class CartPage {
     @FindBy(name = confirmDeliveryOptionName)
     private WebElement confirmDeliveryOptionButton;
 
-    //checkout
+
     public CartPage(WebDriverWrapper webDriverWrapper){
         this.webDriverWrapper = webDriverWrapper;
         PageFactory.initElements(this.webDriverWrapper.getDriver(), this);

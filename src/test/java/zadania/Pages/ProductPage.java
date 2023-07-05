@@ -12,7 +12,7 @@ public class ProductPage {
     private final WebDriverWrapper webDriverWrapper;
     private static final String ProductContainerClass = "product-container";
     @FindBy(className = ProductContainerClass)
-    private WebElement productContainer;
+    private WebElement productContainer; // sprawdzenie czy otwożył się dobry produkt
     private static final String ProductSelectClass = "form-control-select";
     @FindBy(className = ProductSelectClass)
     private WebElement productSelect;
@@ -22,7 +22,7 @@ public class ProductPage {
 
     private static final String AddToCartButtonCss = "button[class='btn btn-primary add-to-cart']";
     @FindBy(css = AddToCartButtonCss)
-    private WebElement addToCartButton;
+    private WebElement addToCartButton; // kliknięcie button add to cart
 
     public ProductPage(WebDriverWrapper webDriverWrapper){
         this.webDriverWrapper = webDriverWrapper;
@@ -42,11 +42,11 @@ public class ProductPage {
 
         webDriverWrapper.setSelect(productSelect,countryMap.get(productSize));
         return this;
-    }
+    } // mapa rozmiarów prodóktu, i wybór
     public ProductPage setProductQuantity(String productQuantity) {
         webDriverWrapper.enterText(productQuantityFiled,productQuantity);
         return this;
-    }
+    }// wyczyszczenie i wpisanie ilości produktów
     public CartPage clickAddToCart() {
         webDriverWrapper.clickOnElement(addToCartButton);
         return new CartPage(webDriverWrapper);

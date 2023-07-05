@@ -48,7 +48,7 @@ public class ShopSteps {
     @Then("Check if address is correct {string} {string} {string} {string} {string} {string}")
     public void CheckAddress(String alias, String address, String city, String postalCode, String country, String phone) {
         shopMainPage.assertAddress(alias,address,city,postalCode,country,phone);
-    }
+    } // ostatni krok pierwszego zadania
     @When("User searches for product {string}")
     public void searchForProduct(String productName) {
         productPage = shopMainPage.searchForProduct(productName);
@@ -101,6 +101,6 @@ public class ShopSteps {
     @Then("Take Screenshot {string}")
     public void takeScreenshot(String fileName) throws IOException {
         webDriverWrapper.takeScreenshot(fileName);
-    }
+    }   //ostatni krok  drógiego zadania
 
 }

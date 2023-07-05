@@ -38,12 +38,13 @@ public class ShopMainPage {
     private static final String UserAddressClass = "address";
     @FindBy(css = UserAddressClass)
     private WebElement userAddress;
-    private static final String searchClass = "ui-autocomplete-input";
+    // zmiana adresu
+    private static final String searchClass = "ui-autocomplete-input"; // wyszukiwarka
     @FindBy(className = searchClass)
-    private WebElement search;
-    private static final String productsTitlesClass = "product-title";
+    private WebElement search; // wyszukiwarka
+    private static final String productsTitlesClass = "product-title"; // lista wyszukanych produktów
     @FindBy(className = productsTitlesClass)
-    private List<WebElement> products;
+    private List<WebElement> products; // lista wyszukanych produktów
 
     public ShopMainPage(WebDriverWrapper webDriverWrapper){
         this.webDriverWrapper = webDriverWrapper;
@@ -68,7 +69,7 @@ public class ShopMainPage {
 
         webDriverWrapper.clickOnElement(saveButton);
         return this;
-    }
+    }// dodanie adresu
     public ShopMainPage assertAddress(String alias, String address, String city, String postalCode, String country, String phone) {
         String addressData = webDriverWrapper.getText(userAddress);
         assert addressData.contains(alias);
@@ -79,22 +80,23 @@ public class ShopMainPage {
         assert addressData.contains(phone);
 
         return this;
-    }
+    }// sprawdzenie poprawnści adresu
 
-    public ProductPage openProduct(String productName) {
-        for ( WebElement product : products)
-        {
-           if (Objects.equals(webDriverWrapper.getText(product), productName)) {
-               webDriverWrapper.clickOnElement(product);
-               return new ProductPage(webDriverWrapper);
-           }
-        }
-        return null;
-    }
+
     public ProductPage searchForProduct(String productName){
         webDriverWrapper.enterText(search,productName);
         webDriverWrapper.pressEnter();
         return openProduct(productName);
+    } // wyszukanie i otwarcie produktu
+    public ProductPage openProduct(String productName) {
+        for ( WebElement product : products)
+        {
+            if (Objects.equals(webDriverWrapper.getText(product), productName)) {
+                webDriverWrapper.clickOnElement(product);
+                return new ProductPage(webDriverWrapper);
+            }
+        } // wybór produktu z listy
+        return null;
     }
 
 }
